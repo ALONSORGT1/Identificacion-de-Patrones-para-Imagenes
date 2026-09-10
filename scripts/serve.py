@@ -7,7 +7,9 @@ os.chdir(Path(__file__).resolve().parents[1])
 class PublicHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split('?', 1)[0]
-        if path in ('/', '/index.html') or path.startswith('/assets/'):
+        resolved = Path(self.translate_path(self.path)).resolve()
+        root = Path.cwd().resolve()
+        if resolved == root / 'index.html' or (path == '/' and resolved == root) or resolved.is_relative_to(root / 'assets'):
             return super().do_GET()
         self.send_error(404)
 
