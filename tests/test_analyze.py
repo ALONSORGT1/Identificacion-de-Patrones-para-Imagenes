@@ -1,5 +1,6 @@
 import base64
 import io
+import http.client
 import json
 import os
 import threading
@@ -114,8 +115,15 @@ class HTTPTests(unittest.TestCase):
         with self.req('POST',b'not JSON') as res:
             self.assertEqual(res.status,400)
             self.assertEqual(res.headers['Access-Control-Allow-Origin'],'http://localhost:5500')
-        with self.req('POST',b' '*(app.MAX_BODY+1)) as res:
+        # Test rejection from headers, before sending a body. On Linux an early
+        # rejection can close the socket while urllib is still uploading 4 MB.
+        conn = http.client.HTTPConnection('127.0.0.1', self.server.server_port)
+        conn.request('POST', '/api/analyze', body=b'', headers={
+            'Origin': 'http://localhost:5500', 'Content-Type': 'application/json',
+            'Content-Length': str(app.MAX_BODY + 1)})
+        with conn.getresponse() as res:
             self.assertEqual(res.status,413)
+        conn.close()
 
     @patch.object(app,'fetch_image',return_value={'image':sample_image(),'width':80,'height':50})
     def test_remote_image(self, fetch):
