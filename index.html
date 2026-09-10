@@ -14,7 +14,7 @@
     <title>Nexo Visión — Identificación de Patrones para Imagenes</title>
     <script src="assets/js/theme.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css?v=2" />
-    <script src="assets/js/app.js?v=2" defer></script>
+    <script src="assets/js/app.js?v=3" defer></script>
   </head>
   <body>
     <aside class="sidebar">
@@ -42,7 +42,7 @@
     <main class="workspace">
       <header class="topbar">
         <div>
-          <strong>Nexo Visión</strong><span class="tag">EDUCATIVO</span>
+          <strong>Nexo Visión</strong>
         </div>
         <div class="actions">
           <button id="mobileNew" class="mobile-only" aria-label="Nuevo análisis">＋</button>
@@ -117,13 +117,13 @@
             </div>
             <div class="suggestions" id="suggestions">
               <button
-                data-prompt="Identifica todos los tornillos y dime cuántos hay."
+                data-prompt="Identifica y cuenta todos los objetos visibles en la imagen."
               >
-                ↗ Contar tornillos</button
+                ↗ Contar objetos</button
               ><button
-                data-prompt="Identifica y cuenta por separado los tornillos, las tuercas y los clavos."
+                data-prompt="Identifica qué tipo de objeto se repite más en la imagen, cuenta sus elementos y márcalos."
               >
-                ↗ Separar por categoría</button
+                ↗ Encontrar objetos repetidos</button
               ><button
                 data-prompt="Identifica y cuenta todos los objetos visibles por categoría."
               >
@@ -149,6 +149,7 @@
                 placeholder="Por ejemplo: identifica todos los tornillos y dime cuántos hay…"
                 rows="2"
                 maxlength="1000"
+                aria-describedby="keyboardHint"
               ></textarea>
               <div class="composer-bottom">
                 <span id="charCount">0 / 1000</span>
@@ -165,6 +166,7 @@
                 </div>
               </div>
             </form>
+            <p id="keyboardHint" class="fine-print">Enter para enviar · Shift + Enter para un salto de línea.</p>
             <p class="fine-print">
               La IA puede omitir o confundir objetos. Verifica el conteo con las
               marcas.

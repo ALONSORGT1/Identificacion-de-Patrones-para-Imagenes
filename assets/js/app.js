@@ -218,6 +218,13 @@
   window.addEventListener("dragover", (e) => e.preventDefault());
   window.addEventListener("drop", (e) => e.preventDefault());
   $("message").addEventListener("input", update);
+  $("message").addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
+    event.preventDefault();
+    if (!event.repeat && !$("analyzeButton").disabled) {
+      $("analyzeForm").requestSubmit();
+    }
+  });
   document.querySelectorAll("[data-prompt]").forEach(
     (button) =>
       (button.onclick = () => {

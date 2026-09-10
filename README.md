@@ -10,7 +10,7 @@ Continuación de [1.2 Aplicaciones web IA](https://github.com/ALONSORGT1/Aplicac
 ## Uso
 
 1. Carga un JPG, PNG o WebP desde tu dispositivo, arrástralo al recuadro o pega un enlace HTTPS directo a una imagen pública.
-2. Escribe, por ejemplo: **«Identifica todos los tornillos y dime cuántos hay»**. También puedes pedir tornillos, tuercas y clavos por separado.
+2. Escribe, por ejemplo: **«Identifica todos los tornillos y dime cuántos hay»** y presiona **Enter** o **Analizar imagen**. Usa **Shift + Enter** para insertar un salto de línea. También puedes pedir tornillos, tuercas y clavos por separado.
 3. El resultado muestra el total, las cantidades por categoría y una marca numerada por objeto.
 4. Abre **Imágenes** para comparar la original con la marcada, ampliar ambas y descargar el PNG o los resultados JSON.
 5. Haz otra petición sobre la misma imagen o usa **Nuevo análisis**. Cada petición es independiente; indica explícitamente los objetos que deseas buscar.
@@ -41,7 +41,7 @@ Para trabajar también en el backend, instala Vercel CLI, conecta este proyecto 
 
 | Variable | Configuración |
 |---|---|
-| `OPENAI_API_KEY` | Misma clave del proyecto 1.2; solo en el servidor. |
+| `OPENAI_API_KEY` | Clave privada alojada únicamente en el servidor. |
 | `OPENAI_MODEL` | `gpt-6-astra` |
 | `ALLOWED_ORIGINS` | `https://alonsorgt1.github.io,https://identificacion-de-patrones-para-ima.vercel.app` |
 | `ALLOW_LOCALHOST` | `true`, permite `localhost`, `127.0.0.1` y `[::1]` con HTTP/HTTPS en cualquier puerto válido. |
