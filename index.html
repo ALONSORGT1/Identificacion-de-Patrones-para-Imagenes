@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#f6f7f3">
+  <meta name="description" content="Identifica, cuenta y encuentra objetos en tus imágenes con Nexo Visión.">
+  <title>Nexo Visión — Identificación de Patrones para Imagenes</title>
+  <script src="assets/js/theme.js"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./"><span class="brand-mark">n✳</span> nexo<span class="brand-dot">.</span></a>
+    <p class="eyebrow">UNA NUEVA FORMA DE VER</p>
+    <button id="newAnalysis" class="new-button">＋ Nuevo análisis</button>
+    <p class="nav-label">ESPACIO DE TRABAJO</p>
+    <div class="nav-active">◉ &nbsp; Identificación de imágenes <span>●</span></div>
+    <div class="sidebar-note"><span>✳</span><h2>Cada detalle<br>cuenta.</h2><p>Encuentra lo que buscas.<br>Observa, identifica y compara.</p></div>
+    <footer>Desarrollado por<br><strong>Alonso Ramírez G.</strong><small>Inteligencia Artificial aplicada a las TIC</small></footer>
+  </aside>
+  <main class="workspace">
+    <header class="topbar"><div><strong>Nexo Visión</strong><span class="tag">EDUCATIVO</span></div><div class="actions"><button id="showPanel" aria-controls="imagePanel" aria-expanded="false">◫ Imágenes</button><button id="themeToggle" aria-label="Activar modo oscuro">◐</button></div></header>
+    <div class="work-area">
+      <section class="chat-area" aria-label="Análisis de imágenes">
+        <div class="scroll-area" id="scrollArea">
+          <section class="welcome" id="welcome">
+            <div class="hero-symbol" aria-hidden="true">◉</div><p class="eyebrow">MIRA MÁS ALLÁ DE LA IMAGEN</p>
+            <h1>Una imagen.<br><span>Todos sus detalles.</span></h1>
+            <p class="intro">Sube una imagen y dime qué quieres encontrar.<br>Yo lo identifico, lo cuento y te muestro dónde está.</p>
+          </section>
+          <section class="upload-card" id="dropZone" aria-label="Cargar una imagen">
+            <div class="upload-icon" aria-hidden="true">↥</div><h2>Empieza con una imagen</h2><p>Arrástrala aquí o elige cómo cargarla.</p>
+            <div class="source-buttons"><button class="primary" id="chooseFile">＋ Desde mi dispositivo</button><button id="showUrl" aria-expanded="false" aria-controls="urlForm">↗ Pegar una URL</button></div>
+            <input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+            <form id="urlForm" hidden><label for="imageUrl">Enlace directo a una imagen</label><div class="url-row"><input id="imageUrl" type="url" placeholder="https://ejemplo.com/imagen.jpg" maxlength="2048" required><button type="submit" class="primary">Cargar</button></div></form>
+            <small>JPG, PNG o WebP · Hasta 12 MB · Máximo 24 megapíxeles</small>
+          </section>
+          <div id="selectedImage" class="selected-image" hidden><img id="thumbnail" alt="Imagen seleccionada"><div><strong id="imageName"></strong><small id="imageSize"></small></div><button id="replaceImage">Cambiar</button></div>
+          <div class="suggestions" id="suggestions"><button data-prompt="Identifica todos los tornillos y dime cuántos hay.">↗ Contar tornillos</button><button data-prompt="Identifica y cuenta por separado los tornillos, las tuercas y los clavos.">↗ Separar por categoría</button><button data-prompt="Identifica y cuenta todos los objetos visibles por categoría.">↗ Explorar la imagen</button></div>
+          <div id="conversation" class="conversation" aria-live="polite" aria-relevant="additions"></div>
+        </div>
+        <div class="composer-area">
+          <p id="status" role="status" class="status">Carga una imagen para comenzar.</p>
+          <form id="analyzeForm"><label for="message" class="sr-only">Qué quieres identificar</label><textarea id="message" placeholder="Por ejemplo: identifica todos los tornillos y dime cuántos hay…" rows="2" maxlength="1000"></textarea><div class="composer-bottom"><span id="charCount">0 / 1000</span><div><button type="button" id="cancel" hidden>Cancelar</button><button type="submit" id="analyzeButton" class="primary" disabled>Analizar imagen ↗</button></div></div></form>
+          <p class="fine-print">La IA puede omitir o confundir objetos. Verifica el conteo con las marcas.</p>
+        </div>
+      </section>
+      <aside id="imagePanel" class="image-panel" aria-label="Comparación de imágenes" hidden>
+        <div class="panel-heading"><div><p class="eyebrow">TU MESA DE ANÁLISIS</p><h2>Un vistazo más cerca</h2></div><button id="closePanel" aria-label="Cerrar panel de imágenes">×</button></div>
+        <p id="panelEmpty">Tu imagen y sus detecciones aparecerán aquí.</p>
+        <div id="comparison" hidden>
+          <figure><figcaption><span>01 &nbsp; Original</span><button id="zoomOriginal">Ampliar ↗</button></figcaption><img id="originalImage" alt="Imagen original sin marcas"></figure>
+          <figure id="annotatedFigure" hidden><figcaption><span>02 &nbsp; Objetos identificados</span><button id="zoomAnnotated">Ampliar ↗</button></figcaption><canvas id="annotatedCanvas" role="img" aria-label="Imagen con círculos numerados en cada objeto identificado"></canvas></figure>
+          <div id="resultSummary" hidden><div class="total-card"><strong id="totalCount">0</strong><span>objetos identificados</span></div><div id="categories" class="categories"></div><button id="downloadImage" class="primary download">↓ Descargar imagen marcada</button><button id="downloadJson" class="download">↓ Descargar resultados JSON</button><p class="fine-print">Los números corresponden a las marcas de la imagen.</p></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <dialog id="zoomDialog"><div class="zoom-header"><strong id="zoomTitle">Vista ampliada</strong><button id="closeZoom" aria-label="Cerrar vista ampliada">×</button></div><img id="zoomImage" alt="Imagen ampliada"></dialog>
+</body>
+</html>
