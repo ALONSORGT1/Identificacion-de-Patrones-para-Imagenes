@@ -83,3 +83,5 @@ node --check assets/js/app.js
 ```
 
 La prueba con SDK simulado valida el contrato, no la precisión real. Antes de usarla para un inventario, comprueba con fotografías representativas y conteos manuales.
+
+Verificación real realizada con `tests/fixtures/figuras.png`: el modelo localizó tres círculos rojos; en una segunda petición desde la interfaz identificó tres círculos y dos cuadrados (cinco marcas). Se comprobó visualmente el panel y se descargó un PNG válido de 700 × 450 px. Esta imagen de control comprueba el flujo completo, no demuestra precisión en fotografías de tornillos u objetos superpuestos.
