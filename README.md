@@ -5,7 +5,7 @@
 Continuación de [1.2 Aplicaciones web IA](https://github.com/ALONSORGT1/Aplicaciones-web-IA): conserva la arquitectura HTML/CSS/JavaScript + Python en Vercel, la identidad Nexo y el cambio de tema. El flujo del chat se adapta al análisis visual.
 
 - [Aplicación en GitHub Pages](https://alonsorgt1.github.io/Identificacion-de-Patrones-para-Imagenes/)
-- [Aplicación y API en Vercel](https://identificacion-de-patrones-para-imagenes.vercel.app/)
+- [Aplicación y API en Vercel](https://identificacion-de-patrones-para-ima.vercel.app/)
 
 ## Uso
 
@@ -43,7 +43,7 @@ Para trabajar también en el backend, instala Vercel CLI, conecta este proyecto 
 |---|---|
 | `OPENAI_API_KEY` | Misma clave del proyecto 1.2; solo en el servidor. |
 | `OPENAI_MODEL` | `gpt-6-astra` |
-| `ALLOWED_ORIGINS` | `https://alonsorgt1.github.io,https://identificacion-de-patrones-para-imagenes.vercel.app` |
+| `ALLOWED_ORIGINS` | `https://alonsorgt1.github.io,https://identificacion-de-patrones-para-ima.vercel.app` |
 | `ALLOW_LOCALHOST` | `true`, permite `localhost`, `127.0.0.1` y `[::1]` con HTTP/HTTPS en cualquier puerto válido. |
 
 Se admite también la variable anterior `ALLOWED_ORIGIN` si no existe `ALLOWED_ORIGINS`. No incluyas la ruta del repositorio en un origen. `https://github.com` no sirve el frontend: el origen de Pages es `https://alonsorgt1.github.io`.

@@ -19,7 +19,7 @@ from openai import OpenAI, APITimeoutError, RateLimitError, APIError
 MAX_BODY = 4_000_000
 MAX_IMAGE = 12_000_000
 Image.MAX_IMAGE_PIXELS = 24_000_000
-DEFAULT_ORIGINS = "https://alonsorgt1.github.io,https://identificacion-de-patrones-para-imagenes.vercel.app"
+DEFAULT_ORIGINS = "https://alonsorgt1.github.io,https://identificacion-de-patrones-para-ima.vercel.app"
 
 
 def origin_allowed(origin):

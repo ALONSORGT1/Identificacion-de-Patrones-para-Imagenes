@@ -2,7 +2,7 @@
 (() => {
   "use strict";
   const API_URL =
-    "https://identificacion-de-patrones-para-imagenes.vercel.app/api/analyze";
+    "https://identificacion-de-patrones-para-ima.vercel.app/api/analyze";
   const $ = (id) => document.getElementById(id);
   const palette = [
     "#e14c3c",
